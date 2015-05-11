@@ -1,0 +1,269 @@
+/*
+
+
+Reworked by: Nenad Lukic 
+
+Reworker URI: http://nenadspp.com
+
+Developer :@nenadajse
+
+
+*/
+
+.featured-leftright { float: right !important; }
+
+.featured-left { float:left; width: 20%; display: inline; float: left; margin-right: 2.564102564103%;  color: #695b4d;}
+
+#entryinfo { width:25%; }
+
+#flr-entry { width: 68%; }
+
+.fl-content { background-color: #eee1d4; padding: 30px; margin-top:12px; }
+
+.catnav { list-style:none; margin:0; padding:0; font-size:13px}
+
+.catnav a { font-weight:700; display:block; padding:4px; margin:2px; }
+
+.catnav a:hover { background-color: #c7ad93; color: #fff;}
+
+.mega-inner { width:90%; }
+
+.item-e-title { font-size:14px; margin:12px 0 12px 0;}
+
+.item-meta { font-size:13px; }
+
+.title-main { font-size:20px; display:block; margin-bottom:20px; }
+
+
+
+
+.separatorbot { height:80px; width:100%; }
+
+.article-instance { 
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+}
+
+.article-instance:hover {
+    border-left: 6px solid #eee1d4;
+}
+
+.article-instance h4 {
+    color:#ccc;
+    font-size: 85%;
+}
+
+.article-instance h2 { font-weight: bold; margin-bottom: 10px;}
+
+.border-bottom { border-bottom: 2px solid #eeeccc; width: 90%; height:2px; margin:20px 40px 20px 40px; }
+
+.main-article { 
+    background-color: #eee1d4; 
+    padding: 30px 30px 30px 30px;
+    margin: 0px 0px 20px 0px;
+
+}
+
+.j-desc { display: inline-block;color: #A3A3A3; padding: 15px 5px 25px 5px; font-style: italic;}
+
+.journal-entry { height: 190px;}
+
+.journal-img { width:140px; height: 190px; border: 6px solid #fefefe;}
+
+#journal-img-title { 
+    position: relative; 
+    display:none; 
+    font-size: 16px; 
+    color:#fefefe; 
+    font-weight: bold; 
+    top: -50px; width: 140px; height: 50px; 
+    padding: 5px; 
+    background:rgba(0,0,0,0.85);
+}
+
+#article-links {
+    border: none;
+}
+
+#article-links > li.active a { 
+    background: #eee1d4;
+}
+
+#display-article { 
+    padding: 0px;
+}
+
+.category { color: #F0A091 !important}
+
+ .main-journal-info h2 { font-weight: bold;}
+
+.main-article h2, h4 { font-weight: bold;}
+
+.article-body { margin:5px 2px 15px 2px; padding: 8px; border-left: 5px solid #F5F5F5}
+
+.article-viewport { 
+    max-height: 600px;
+    width: 99%;
+    overflow: auto;
+    padding: 18px;
+    background: #F5EDE5;
+    -webkit-border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    border-radius: 4px; 
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+::-webkit-scrollbar-track {
+    background-color: #fff;
+
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    border-radius: 4px; 
+    background-color: #7D7D7D;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+
+.tab-links { 
+    margin:0;
+    border-bottom: 2px solid #fff;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            cursor: pointer; 
+            display: inline-block; 
+            background-color: pink; 
+            background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f18c78), color-stop(50%, #e9836d), color-stop(100%, #e17860)); background-image: -webkit-linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+            background-image: -moz-linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+            background-image: -o-linear-gradient(#f18c78, #e9836d 50%, #e17860);
+            background-image: linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+            border-width: 0; 
+            border: 1px solid #ce5c45;
+            border-bottom:0;
+            -webkit-border-radius: 0px; 
+            -moz-border-radius: 0px; 
+            border-radius: 0px; 
+            text-align: center; 
+            color: white; 
+            font-size: 12px; 
+            font-size: 0.75rem; 
+            line-height: 2; 
+            font-family: "Lato", serif; 
+            font-weight: bold; 
+            line-height: 24px; 
+            padding-top: 3px; 
+            padding-bottom: 3px; 
+            min-width: 82px; 
+        }
+ 
+        .tab-links a:hover {
+            background:#ce5c45;
+            text-decoration:none;
+            color:#fff;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:none;
+        background:#fff;
+        color:#666;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:15px;
+        border-radius:3px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+    }
+ 
+        .tab {
+            display:none;
+        }
+ 
+        .tab.active {
+            display:block;
+        }
+        
+
+
+/*----- Accordion -----*/
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box; 
+    -moz-box-sizing:border-box; 
+    box-sizing:border-box;
+}
+ 
+.accordion {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+    background:#f7f7f7;
+}
+
+.accordion a {
+    color: #fff;
+}
+ 
+/*----- Section Titles -----*/
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+            background-color: pink; 
+            background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f18c78), color-stop(50%, #e9836d), color-stop(100%, #e17860)); background-image: -webkit-linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+            background-image: -moz-linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+            background-image: -o-linear-gradient(#f18c78, #e9836d 50%, #e17860);
+            background-image: linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+    transition:all linear 0.15s;
+    /* Type */
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #1a1a1a;
+    color:#fff;
+}
+ 
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#7B7B7B;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f18c78), color-stop(50%, #e9836d), color-stop(100%, #e17860)); background-image: -webkit-linear-gradient(#f18c78, #e9836d 50%, #e17860); 
+    background-image: -moz-linear-gradient(#9F9F9F, #858585 50%, #7B7B7B); 
+    background-image: -o-linear-gradient(#9F9F9F, #858585 50%, #7B7B7B);
+    background-image: linear-gradient(#9F9F9F, #858585 50%, #7B7B7B); 
+    /* Type */
+    text-decoration:none;
+}
+ 
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+ 
+/*----- Section Content -----*/
+.accordion-section-content {
+    padding:25px;
+    display:none;
+    margin: 0;
+}
