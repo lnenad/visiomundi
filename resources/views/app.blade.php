@@ -38,7 +38,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Dashboard</a></li>
+					<li><a href="{{ route('administration.index') }}">Dashboard</a></li>
 					<li><a href="{{ route('administration.create') }}">Create a new Journal</a></li>
 					<li><a href="{{ url('/') }}">Home</a></li>
 				</ul>
@@ -60,9 +60,15 @@
 		</div>
 	</nav>
 	<div class="main">
+	@if (Session::has('message'))
+		<div class="flash alert-info">
+			<p>{{ Session::get('message') }}</p>
+		</div>
+	@endif
 	@yield('content')
 	</div>
 	<!-- Scripts -->
+	@yield('scripts')
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>

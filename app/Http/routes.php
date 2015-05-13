@@ -43,6 +43,11 @@ Route::get('administration/{journal}/{article}/edit', 'AdminController@editartic
 Route::get('administration/journal/create', 'AdminController@create');
 Route::get('administration/{journal}/article/create', 'AdminController@createarticle');
 
+//Named routes for article manipulation
+Route::patch('administration/{journal}/{article}', ['as' => 'administration.updatearticle', 'uses' => 'AdminController@updatearticle']);
+Route::delete('administration/{journal}/{article}', ['as' => 'administration.destroyarticle', 'uses' => 'AdminController@destroyarticle']);
+
+
 Route::resource('journals', 'JournalsController');
 Route::resource('journals.articles', 'ArticlesController');
 

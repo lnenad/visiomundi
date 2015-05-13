@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Journal extends Model {
+	protected $guarded = [];
 
 	public function articles() {
 		return $this->hasMany('App\Article');

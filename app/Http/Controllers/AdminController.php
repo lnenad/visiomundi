@@ -53,7 +53,14 @@ class AdminController extends Controller {
 	 */
 	public function store()
 	{
-		return Input::all();
+		$input = Input::all();
+		//$user_id = Auth::user()->id;
+
+		$input = array_add($input, 'usersincharge', '2');
+
+		$journal = Journal::create($input);
+
+		return Redirect::route('administration.index')->with('message', 'Journal created.');
 	}
 
 	/**
@@ -97,9 +104,11 @@ class AdminController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function editarticle($id)
+	public function editarticle($journal, $article)
 	{
-		return "Edit article";
+		$article = Article::whereSlug($article)->first();
+
+		return view('admin.editarticle', compact('journal','article'));
 	}
 
 	/**
@@ -108,9 +117,25 @@ class AdminController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Journal $journal)
 	{
-		//
+		$input = Input::all();
+		//$user_id = Auth::user()->id;
+		//dd($journal);
+		$journal->update($input);
+
+		return Redirect::route('administration.index')->with('message', 'Journal updated.');
+	}
+
+	public function updatearticle($journal, $article_id)
+	{
+		$article = Article::whereSlug($article_id)->first();
+		$input = Input::except('_method', '_token');
+		//$user_id = Auth::user()->id;
+		//dd($journal);
+		$article->update($input);
+
+		return Redirect::route('administration.show',$journal)->with('message', 'Article updated.');
 	}
 
 	/**
@@ -119,9 +144,14 @@ class AdminController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Journal $journal)
 	{
-		//
+		return $id;
+	}
+
+	public function destroyarticle($journal, $article_id)
+	{
+		return $article_id;
 	}
 
 }
