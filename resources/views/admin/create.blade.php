@@ -6,3 +6,13 @@
         @include('admin._journal', ['submit_text' => 'Create Journal'])
     {!! Form::close() !!}
 @endsection
+
+@section('scripts')
+<script src="{{ asset('/js/ckeditor.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	CKEDITOR.replace( 'textbody' );
+	CKEDITOR.replace( 'aboutbody' );
+});
+</script>
+@endsection

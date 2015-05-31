@@ -9,7 +9,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('about', 'About: ') !!}
-    {!! Form::textarea('about', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('about', null, ['class' => 'form-control', 'id' => 'aboutbody']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('contact_email', 'Contact email: ') !!}
@@ -17,7 +17,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('contact_info', 'Contact info: ') !!}
-    {!! Form::textarea('contact_info',null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('contact_info',null, ['class' => 'form-control', 'id' => 'textbody']) !!}
 </div>
 <div class="form-group">
     {!! Form::submit($submit_text, ['class'=>'btn primary']) !!}

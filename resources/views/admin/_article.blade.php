@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('body', 'Article body: ') !!}
-    {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('body', null, ['class' => 'form-control', 'id' => 'textbody']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('category', 'Category: ') !!}
