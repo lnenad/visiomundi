@@ -6,6 +6,8 @@ use App\Article;
 use App\Journal;
 use Input;
 use Redirect;
+use Str;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -55,6 +57,8 @@ class AdminController extends Controller {
 	{
 		$input = Input::all();
 		//$user_id = Auth::user()->id;
+		$slug = str_slug($input['name'],'-');
+		$input = array_add($input, 'slug', $slug);
 
 		$input = array_add($input, 'usersincharge', '2');
 
@@ -68,9 +72,22 @@ class AdminController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function storearticle()
+	public function storearticle($journal)
 	{
-		return Input::all();
+		$input = Input::all();
+		$journal_obj = Journal::whereSlug($journal)->first();
+		$slug = str_slug($input['title'],'-');
+
+		$input = array_add($input, 'journal_id', $journal_obj->id);
+		$input = array_add($input, 'slug', $slug);
+
+		$article = Article::create($input);
+		$user_id = Auth::user()->id;
+		$article->users()->attach($user_id);
+		//Article cat attachment $article->categories()->attach($user_id)
+
+		return Redirect::route('administration.show', $journal)->with('message', 'Article created.');
+
 	}
 
 	/**
@@ -122,6 +139,8 @@ class AdminController extends Controller {
 		$input = Input::all();
 		//$user_id = Auth::user()->id;
 		//dd($journal);
+		$slug = str_slug($input['name'],'-');
+		$input = array_add($input, 'slug', $slug);
 		$journal->update($input);
 
 		return Redirect::route('administration.index')->with('message', 'Journal updated.');
@@ -131,9 +150,19 @@ class AdminController extends Controller {
 	{
 		$article = Article::whereSlug($article_id)->first();
 		$input = Input::except('_method', '_token');
+		$slug = str_slug($input['title'],'-');
+
+		$input = array_add($input, 'slug', $slug);
 		//$user_id = Auth::user()->id;
 		//dd($journal);
 		$article->update($input);
+
+		$user_id = Auth::user()->id;
+
+		$exists = $article->users->contains($user_id);
+		if (!$exists) {
+			$article->users()->attach($user_id);
+		}
 
 		return Redirect::route('administration.show',$journal)->with('message', 'Article updated.');
 	}
@@ -146,12 +175,18 @@ class AdminController extends Controller {
 	 */
 	public function destroy(Journal $journal)
 	{
-		return $id;
+		$journal->delete();
+
+		return Redirect::route('administration.index')->with('message', 'Journal deleted.');
+
 	}
 
 	public function destroyarticle($journal, $article_id)
 	{
-		return $article_id;
+		$article = Article::whereSlug($article_id)->first();
+		$article->delete();
+ 
+		return Redirect::route('administration.show', $journal)->with('message', 'Article deleted.');
 	}
 
 }

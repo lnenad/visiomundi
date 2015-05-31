@@ -20,7 +20,7 @@ class CreateArticles extends Migration {
 			$table->string('doi');
 			$table->string('category');
 			$table->string('title');
-			$table->string('slug');
+			$table->string('slug')->unique();
 			$table->string('keywords');
 			$table->text('body');
 			$table->integer('views');

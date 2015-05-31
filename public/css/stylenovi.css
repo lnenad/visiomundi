@@ -72,13 +72,13 @@ Developer :@nenadajse
 
 #journal-img-title { 
     position: relative; 
-    display:none; 
+    display:none;
     font-size: 16px; 
-    color:#fefefe; 
+    color:#540E0E; 
     font-weight: bold; 
-    top: -50px; width: 140px; height: 50px; 
+    top: -50px; width: 160px; height: 60px; 
     padding: 5px; 
-    background:rgba(0,0,0,0.85);
+    background:rgba(238,225,212,1);
 }
 
 #article-links {

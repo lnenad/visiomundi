@@ -61,8 +61,8 @@
 	</nav>
 	<div class="main">
 	@if (Session::has('message'))
-		<div class="flash alert-info">
-			<p>{{ Session::get('message') }}</p>
+		<div class="flash alert-info" style="padding: 11px;">
+			<h4>{{ Session::get('message') }}</h4>
 		</div>
 	@endif
 	@yield('content')

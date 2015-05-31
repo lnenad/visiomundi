@@ -13,6 +13,10 @@ class Journal extends Model {
 		return $this->hasMany('App\User');
 	}
 
+	public function categories() {
+		return $this->belongsToMany('App\Category');
+	}
+
 	/** shortdesc function
 	* Generate a short desc.
 	*

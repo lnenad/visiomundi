@@ -28,11 +28,11 @@
 				<ul class="journals wrap-items">
 					<div class="row">
 					@foreach ($journals as $journal)
-						<li class="col-md-3 journal-entry" name="{{ $journal->name }}" >
-							<a href="{{ route('journals.show', $journal->slug) }}">
+						<li class="col-md-3 journal-entry">
+							<a href="{{ route('journals.show', $journal->slug) }}"  name="{{ $journal->name }}" class="journal-entry">
 							<img class="journal-img" src="{{$journal->image}}" />
-							<div id="journal-img-title"></div>
-							<h3></h3></a>
+							<div id="journal-img-title" class="titler"></div>
+							</a>
 						</li>
 					@endforeach
 					</a>

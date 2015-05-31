@@ -9,14 +9,20 @@
 <table class="table table-striped table-hover">
 	<tr>
 		<th class="col-md-1">ID</th>
-		<th class="col-md-5">Title</th>
-		<th class="col-md-3">Last update</th>
-		<th class="col-md-3">Actions</th>
+		<th class="col-md-4">Title</th>
+		<th class="col-md-3">Users</th>
+		<th class="col-md-2">Last update</th>
+		<th class="col-md-2">Actions</th>
 	</tr>
 	@foreach ($articles as $article)
 	<tr>
 		<td ><a href="{{$journal->slug}}/{{$article->slug}}/edit">{{$article->id}}</a></td>
 		<td><a href="{{$journal->slug}}/{{$article->slug}}/edit" title="Edit this article">{{$article->title}}</a></td>
+		<td>
+			@foreach ($article->users as $user)
+				{{$user->name}}
+			@endforeach
+		</td>
 		<td >{{$article->updated_at}}</td>
 		<td>
 		<a class="btn btn-info btn-sm" href="{{$journal->slug}}/{{$article->slug}}/edit" role="button"><img src="{{ asset('/img/edits.png') }}"> Edit</a> 

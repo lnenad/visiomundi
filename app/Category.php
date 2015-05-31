@@ -13,5 +13,10 @@ class Category extends Model {
 	{
 		return $this->belongsToMany('App\Article');	
 	}
+
+	public function journals()
+	{
+		return $this->belongsToMany('App\Journal');	
+	}
 	
 }
