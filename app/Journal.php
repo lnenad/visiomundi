@@ -6,11 +6,11 @@ class Journal extends Model {
 	protected $guarded = [];
 
 	public function articles() {
-		return $this->hasMany('App\Article');
+		return $this->hasMany('App\Article')->orderBy('id', 'DESC');
 	}
 
 	public function users() {
-		return $this->hasMany('App\User');
+		return $this->hasMany('App\User')->orderBy('id', 'DESC');
 	}
 
 	public function categories() {

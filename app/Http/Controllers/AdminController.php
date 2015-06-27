@@ -20,7 +20,7 @@ class AdminController extends Controller {
 	 */
 	public function index()
 	{
-		$journals = Journal::all();
+		$journals = Journal::orderBy('id', 'DESC')->get();
 
 		return view('admin.index', compact('journals'));
 	}
@@ -58,6 +58,10 @@ class AdminController extends Controller {
 		$input = Input::all();
 		//$user_id = Auth::user()->id;
 		$slug = str_slug($input['name'],'-');
+
+		if (Journal::whereSlug($slug)) 
+			$slug .= "-".rand(0,100);
+
 		$input = array_add($input, 'slug', $slug);
 
 		$input = array_add($input, 'usersincharge', '2');
@@ -78,15 +82,18 @@ class AdminController extends Controller {
 		$journal_obj = Journal::whereSlug($journal)->first();
 		$slug = str_slug($input['title'],'-');
 
-		$input = array_add($input, 'journal_id', $journal_obj->id);
-		$input = array_add($input, 'slug', $slug);
+		if (Article::whereSlug($slug)) 
+			$slug .= "-".rand(0,100);
 
-		$article = Article::create($input);
-		$user_id = Auth::user()->id;
-		$article->users()->attach($user_id);
-		//Article cat attachment $article->categories()->attach($user_id)
+			$input = array_add($input, 'journal_id', $journal_obj->id);
+			$input = array_add($input, 'slug', $slug);
 
-		return Redirect::route('administration.show', $journal)->with('message', 'Article created.');
+			$article = Article::create($input);
+			$user_id = Auth::user()->id;
+			$article->users()->attach($user_id);
+			//Article cat attachment $article->categories()->attach($user_id)
+
+			return Redirect::route('administration.show', $journal)->with('message', 'Article created.');
 
 	}
 
@@ -140,6 +147,10 @@ class AdminController extends Controller {
 		//$user_id = Auth::user()->id;
 		//dd($journal);
 		$slug = str_slug($input['name'],'-');
+
+		if (Journal::whereSlug($slug)) 
+			$slug .= "-".rand(0,100);
+
 		$input = array_add($input, 'slug', $slug);
 		$journal->update($input);
 
@@ -151,6 +162,8 @@ class AdminController extends Controller {
 		$article = Article::whereSlug($article_id)->first();
 		$input = Input::except('_method', '_token');
 		$slug = str_slug($input['title'],'-');
+		if (Article::whereSlug($slug)) 
+			$slug .= "-".rand(0,100);
 
 		$input = array_add($input, 'slug', $slug);
 		//$user_id = Auth::user()->id;

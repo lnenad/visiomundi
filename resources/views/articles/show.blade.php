@@ -27,24 +27,31 @@
         <a class="accordion-section-title" href="#thearticle">Read the article</a>
          
         <div id="thearticle" class="accordion-section-content main-article">
+            <div class="pull-left">
+                <h1 style="font-size: 30px; font-weight: bold;">{{$article->title}}</h1>
+                <br />
+                Article written by: 
+                @foreach ($article->users as $user) 
+                
+                {{ $user->name }},
+
+                @endforeach<br />
+                Categories:  
+                @foreach ($article->categories as $category)
+                        <a href="#" class="category">{{$category->name}}</a> 
+                        @if(!end($category))
+                            |
+                        @endif
+
+                @endforeach<br />
+                <br /><br />
+            </div>
+            <div class="pull-right">
+                    <img src="{{ asset('/img/pdf-icon.png') }}" style="width: 50px; height: 50px; margin: 10px;">
+                    <img src="{{ asset('/img/odt-icon.png') }}" style="width: 50px; height: 50px; margin: 10px;">
+                    <img src="{{ asset('/img/word-icon.png') }}" style="width: 50px; height: 50px; margin: 10px;">
+                </div>
             <div class="article-viewport">
-				<h1 style="font-size: 30px; font-weight: bold;">{{$article->title}}</h1>
-				<br />
-				Article written by: 
-				@foreach ($article->users as $user) 
-				
-				{{ $user->name }},
-
-				@endforeach<br />
-				Categories:  
-				@foreach ($article->categories as $category)
-			            <a href="#" class="category">{{$category->name}}</a> 
-			            @if(!end($category))
-			            	|
-			            @endif
-
-			    @endforeach<br />
-				<br /><br />
 				<div class="article-body">
 					{!! $article->body !!}
 				</div>
