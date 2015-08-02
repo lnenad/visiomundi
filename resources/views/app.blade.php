@@ -33,12 +33,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">VisioMundi Administration panel</a>
+				<a class="navbar-brand" href="{{ route('administration.index') }}">VisioMundi Administration panel</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ route('administration.index') }}">Dashboard</a></li>
+					<li><a href="{{ route('administration.index') }}">Journals</a></li>
 					<li><a href="{{ route('administration.create') }}">Create a new Journal</a></li>
 					<li><a href="{{ url('/') }}">Home</a></li>
 				</ul>
