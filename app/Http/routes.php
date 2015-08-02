@@ -36,6 +36,8 @@ Route::bind('administration', function($value, $route) {
 	return App\Journal::whereSlug($value)->first();
 });
 
+
+
 Route::post('administration/{journal}/article/store', 'AdminController@storearticle');
 
 Route::get('administration/{journal}/edit', 'AdminController@edit');

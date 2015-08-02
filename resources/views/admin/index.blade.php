@@ -17,10 +17,14 @@
 		<td><a href="administration/{{$journal->slug}}">{{$journal->name}}</a></td>
 		<td >{{$journal->updated_at}}</td>
 		<td>
+		@if (Entrust::can('edit'))
 		<a class="btn btn-info btn-sm" href="administration/{{$journal->slug}}/edit" role="button"><img src="{{ asset('/img/edits.png') }}"> Edit</a> 
+		@endif
+		@if (Entrust::can('delete'))
 	    {!! Form::open(array('id' => 'deleteform'.$journal->id, 'class' => 'form-inline', 'style' => 'display: inline;', 'method' => 'delete', 'route' => array('administration.destroy', $journal->slug))) !!}
 			<a class="btn btn-danger btn-sm" href="#" role="button" onClick="deletejournal({{$journal->id}})"><img src="{{ asset('/img/deletes.png') }}"> Delete</a>
 		{!! Form::close() !!}
+		@endif
 		</td>
 	</tr>
 	@endforeach

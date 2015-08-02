@@ -16,8 +16,20 @@
 	</tr>
 	@foreach ($articles as $article)
 	<tr>
-		<td ><a href="{{$journal->slug}}/{{$article->slug}}/edit">{{$article->id}}</a></td>
-		<td><a href="{{$journal->slug}}/{{$article->slug}}/edit" title="Edit this article">{{$article->title}}</a></td>
+		<td >
+		@if (Entrust::can('edit'))
+			<a href="{{$journal->slug}}/{{$article->slug}}/edit">{{$article->id}}</a>
+		@else 
+			{{$article->id}}
+		@endif
+		</td>
+		<td>
+		@if (Entrust::can('edit'))
+			<a href="{{$journal->slug}}/{{$article->slug}}/edit" title="Edit this article">{{$article->title}}</a>
+		@else
+			{{$article->title}}
+		@endif
+		</td>
 		<td>
 			@foreach ($article->users as $user)
 				{{$user->name}}
@@ -25,10 +37,14 @@
 		</td>
 		<td >{{$article->updated_at}}</td>
 		<td>
+		@if (Entrust::can('edit'))
 		<a class="btn btn-info btn-sm" href="{{$journal->slug}}/{{$article->slug}}/edit" role="button"><img src="{{ asset('/img/edits.png') }}"> Edit</a> 
+		@endif
+		@if (Entrust::can('delete'))
 	    {!! Form::open(array('id' => 'deleteform'.$article->id, 'class' => 'form-inline', 'style' => 'display: inline;', 'method' => 'delete', 'route' => array('administration.destroyarticle', $journal->slug, $article->slug))) !!}
 			<a class="btn btn-danger btn-sm" href="#" role="button" onClick="deletearticle({{$article->id}})"><img src="{{ asset('/img/deletes.png') }}"> Delete</a>
 		{!! Form::close() !!}
+		@endif
 		</td>
 	</tr>
 	@endforeach

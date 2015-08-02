@@ -8,6 +8,7 @@ use Input;
 use Redirect;
 use Str;
 use Auth;
+use Entrust;
 
 use Illuminate\Http\Request;
 
@@ -118,8 +119,12 @@ class AdminController extends Controller {
 	 */
 	public function edit($journal)
 	{
-		$journal = Journal::whereSlug($journal)->first();
-		return view('admin.edit', compact('journal'));
+		if (Entrust::can('edit')){
+			$journal = Journal::whereSlug($journal)->first();
+			return view('admin.edit', compact('journal'));
+		} else {
+			abort(550);
+		}
 	}
 
 	/**
@@ -130,9 +135,12 @@ class AdminController extends Controller {
 	 */
 	public function editarticle($journal, $article)
 	{
-		$article = Article::whereSlug($article)->first();
-
-		return view('admin.editarticle', compact('journal','article'));
+		if (Entrust::can('edit')){
+			$article = Article::whereSlug($article)->first();
+			return view('admin.editarticle', compact('journal','article'));
+		} else {
+			abort(550);
+		}
 	}
 
 	/**
