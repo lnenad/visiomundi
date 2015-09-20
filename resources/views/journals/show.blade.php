@@ -29,14 +29,16 @@
     
 		    <div class="tabs">
 		    <ul class="tab-links">
-		        <li class="active"><a href="#tab1">Articles</a></li>
-		        <li><a href="#tab2">About</a></li>
-		        <li><a href="#tab3">Contact</a></li>
+		        
+		        <li class="active"><a href="#tab2">About</a></li>
 		        <li><a href="#tab4" style="width:100px;">Editorial board</a></li>
+		        <li><a href="#tab1">Articles</a></li>
+		        <li><a href="#tab3">Contact</a></li>
+		        
 		    </ul>
 		 
 		    <div class="tab-content">
-		        <div id="tab1" class="tab active"><br />
+		        <div id="tab1" class="tab"><br />
 		        @foreach ($articles as $article)
 			        <div class="article-instance">
 			            <h2><a href="{{ route('journals.articles.show', [$journal->slug,$article->slug]) }}">{{$article->title}}</a></h2>
@@ -53,7 +55,7 @@
 		        @endforeach
 		        </div>
 		 
-		        <div id="tab2" class="tab">
+		        <div id="tab2" class="tab active">
 		            <p>{{$journal->about}}</p>
 		        </div>
 		 

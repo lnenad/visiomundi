@@ -12,6 +12,7 @@
 		<th class="col-md-4">Title</th>
 		<th class="col-md-3">Users</th>
 		<th class="col-md-2">Last update</th>
+		<th class="col-md-1">Status</th>
 		<th class="col-md-2">Actions</th>
 	</tr>
 	@foreach ($articles as $article)
@@ -36,10 +37,20 @@
 			@endforeach
 		</td>
 		<td >{{$article->updated_at}}</td>
+		<td>@if ($article->isPublished())
+				Published article
+			@else 
+				Unpublished
+			@endif
+		</td>
 		<td>
 		@if (Entrust::can('edit'))
 		<a class="btn btn-info btn-sm" href="{{$journal->slug}}/{{$article->slug}}/edit" role="button"><img src="{{ asset('/img/edits.png') }}"> Edit</a> 
 		@endif
+		@if (!$article->isPublished())
+			<img src="{{ asset('img/publishs.png')}}" alt="Publish this article" title="Publish this article">
+		@endif
+		
 		@if (Entrust::can('delete'))
 	    {!! Form::open(array('id' => 'deleteform'.$article->id, 'class' => 'form-inline', 'style' => 'display: inline;', 'method' => 'delete', 'route' => array('administration.destroyarticle', $journal->slug, $article->slug))) !!}
 			<a class="btn btn-danger btn-sm" href="#" role="button" onClick="deletearticle({{$article->id}})"><img src="{{ asset('/img/deletes.png') }}"> Delete</a>

@@ -1180,7 +1180,7 @@ embed, iframe, object { max-width: 100%; width: 100%; }
 
 
 
-#mobile-menu-btn { display: inline; float: right; width: 32px; height: 32px; background: #000; position: absolute; top: 11px; right: 20px; background: url('assets/img/mobile-menu-white.png) no-repeat 0 0; cursor: pointer; z-index: 99999; }
+#mobile-menu-btn { display: inline; float: right; width: 32px; height: 32px; background: #000; position: absolute; top: 11px; right: 20px; background: url('assets/img/mobile-menu-white.png') no-repeat 0 0; cursor: pointer; z-index: 99999; }
 
 
 

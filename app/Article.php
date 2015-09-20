@@ -21,4 +21,28 @@ class Article extends Model {
 		return $this->belongsToMany('App\Category');	
 	}
 
+	/** published function
+	* Checks if the article is published.
+	*
+	* @return Response
+	*/
+	public function isPublished()
+	{
+		if ($this->status == 2)	
+			return true;
+		else 
+			return false;
+	}
+	
+	/** getStatus function
+	* returns the status.
+	*
+	* @return Response
+	*/
+	public function getStatus()
+	{
+		return $this->status;	
+	}
+	
+
 }

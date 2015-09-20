@@ -31,7 +31,7 @@
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" src="./index_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-migrate.min.js') }}"></script>
 
 <!--[if lt IE 9]>
 	<script src="http://www.publishing.visiomundi.net/wp-content/themes/raakbookoo/js/html5.js"></script>

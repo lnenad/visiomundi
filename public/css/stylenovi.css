@@ -10,7 +10,7 @@ Developer :@nenadajse
 
 */
 
-.featured-leftright { float: right !important; }
+.featured-leftright { float: right !important;} 
 
 .featured-left { float:left; width: 20%; display: inline; float: left; margin-right: 2.564102564103%;  color: #695b4d;}
 
@@ -66,7 +66,7 @@ Developer :@nenadajse
 
 .j-desc { display: inline-block;color: #A3A3A3; padding: 15px 5px 25px 5px; font-style: italic;}
 
-.journal-entry { height: 190px;}
+.journal-entry { height: 190px; width: 140px; margin: 20px; display: block;}
 
 .journal-img { width:140px; height: 190px; border: 6px solid #fefefe;}
 
@@ -76,9 +76,11 @@ Developer :@nenadajse
     font-size: 16px; 
     color:#540E0E; 
     font-weight: bold; 
-    top: -50px; width: 160px; height: 60px; 
-    padding: 5px; 
-    background:rgba(238,225,212,1);
+    width: 140px; 
+    top: -190px;
+    height: 100%; 
+    padding: 15px; 
+    background:rgba(238,225,212,0.85);
 }
 
 #article-links {
